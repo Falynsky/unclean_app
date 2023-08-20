@@ -1,0 +1,7 @@
+{
+  "@@locale": "pl",
+  "helloWorld": "Witaj świecie!",
+  "@helloWorld": {
+    "description": "Powitanie nowych programistów"
+  }
+}
