@@ -7,8 +7,6 @@ import 'package:unclean_app/configs/transaction.dart';
 import 'package:unclean_app/http/services/transactions/transaction_service.dart';
 
 class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
-  late List<Transaction> transactions;
-  late int currentMax = 10;
   TransactionsBloc() : super(TransactionsInitial()) {
     on<LoadTransactionsEvent>(_loadTransactions);
   }
@@ -18,12 +16,12 @@ class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
     Emitter<TransactionsState> emit,
   ) async {
     {
-      TransactionService transactionService = GetIt.I<ChopperClient>().getService<TransactionService>();
+      final TransactionService transactionService = GetIt.I<ChopperClient>().getService<TransactionService>();
       final Response<dynamic> response = await transactionService.fetchTransactions();
       final body = response.body;
       final List<Map<String, dynamic>> parsedBody = List<Map<String, dynamic>>.from(body);
-      transactions = parsedBody.map(Transaction.fromJson).toList();
-      emit(TransactionsLoadedState(transactions: transactions, currentMax: 10));
+      List<Transaction> transactions = parsedBody.map(Transaction.fromJson).toList();
+      emit(TransactionsLoadedState(transactions: transactions));
     }
   }
 }

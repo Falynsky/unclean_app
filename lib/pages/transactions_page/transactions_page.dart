@@ -30,34 +30,42 @@ class _TransactionPageState extends State<TransactionPage> {
   Widget build(BuildContext context) {
     final StopwatchUtils stopwatchUtils = StopwatchUtils();
     stopwatchUtils..start();
-    final BlocBuilder<TransactionsBloc, TransactionsState> widget = BlocBuilder<TransactionsBloc, TransactionsState>(
-      bloc: transactionsBloc,
-      builder: (BuildContext context, TransactionsState state) {
-        if (state is TransactionsInitial) {
-          transactionsBloc.add(LoadTransactionsEvent());
-        } else if (state is TransactionsLoadedState) {
-          return Container(
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: () => navigationCubit.navigate(NavigationScreens.home),
-                  child: const Text('Loaded transactions'),
-                ),
-                Expanded(
-                  child: ListView(
-                    children: state.transactions.map((transaction) {
-                      return Container(child: TransactionCard(transaction: transaction));
-                    }).toList(),
+    final Widget widget = WillPopScope(
+      onWillPop: onWillPop,
+      child: BlocBuilder<TransactionsBloc, TransactionsState>(
+        bloc: transactionsBloc,
+        builder: (BuildContext context, TransactionsState state) {
+          if (state is TransactionsInitial) {
+            transactionsBloc.add(LoadTransactionsEvent());
+          } else if (state is TransactionsLoadedState) {
+            return Container(
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: () => navigationCubit.navigate(NavigationScreens.home),
+                    child: const Text('Loaded transactions'),
                   ),
-                )
-              ],
-            ),
-          );
-        }
-        return const Center(child: CircularProgressIndicator());
-      },
+                  Expanded(
+                    child: ListView(
+                      children: state.transactions.map((transaction) {
+                        return Container(child: TransactionCard(transaction: transaction));
+                      }).toList(),
+                    ),
+                  )
+                ],
+              ),
+            );
+          }
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
     );
     stopwatchUtils..stop();
     return widget;
+  }
+
+  Future<bool> onWillPop() async {
+    navigationCubit.navigate(NavigationScreens.home);
+    return false;
   }
 }
