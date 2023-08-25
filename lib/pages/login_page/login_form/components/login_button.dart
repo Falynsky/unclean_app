@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
-import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
 
 class LoginButton extends StatefulWidget {
- final VoidCallback? onPressed;
+  final VoidCallback? onPressed;
 
   const LoginButton({super.key, this.onPressed});
-
 
   @override
   State<LoginButton> createState() => _LoginButtonState();
 }
 
 class _LoginButtonState extends State<LoginButton> {
-
   late NavigationCubit navigationCubit;
 
   @override

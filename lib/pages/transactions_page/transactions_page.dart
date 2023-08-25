@@ -46,6 +46,11 @@ class _TransactionPageState extends State<TransactionPage> {
                     child: const Text('Loaded transactions'),
                   ),
                   Expanded(
+                    // child: ListView.builder(
+                    //   itemBuilder: (BuildContext context, int index) {
+                    //     return TransactionCard(transaction: state.transactions[index]);
+                    //   },
+                    // ),
                     child: ListView(
                       children: state.transactions.map((transaction) {
                         return Container(child: TransactionCard(transaction: transaction));

@@ -5,14 +5,14 @@ class Transaction extends Equatable {
   final String name;
   final double amount;
   final String transactionInfo;
-  final int documentId;
+  final int userId;
 
   const Transaction({
     required this.id,
     required this.name,
     required this.amount,
     required this.transactionInfo,
-    required this.documentId,
+    required this.userId,
   });
 
  factory Transaction.fromJson(Map<String, Object?> json) {
@@ -21,10 +21,10 @@ class Transaction extends Equatable {
     name: json['name'] as String,
     amount: json['amount'] as double,
     transactionInfo: json['transactionInfo'] as String,
-    documentId: json['documentId'] as int,
+    userId: json['userId'] as int,
   );
 }
 
   @override
-  List<Object?> get props => [id, name, amount, transactionInfo, documentId];
+  List<Object?> get props => [id, name, amount, transactionInfo, userId];
 }

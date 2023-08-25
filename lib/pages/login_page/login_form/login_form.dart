@@ -39,7 +39,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget loginFormWrapper(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return Padding(
-      padding: const EdgeInsets.fromLTRB(28, 37, 28, 35),
+      padding: const EdgeInsets.fromLTRB(28, 35, 28, 0),
       child: Form(
         key: formKey,
         child: Column(
