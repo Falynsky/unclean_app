@@ -27,15 +27,15 @@ class _TransactionCardState extends State<TransactionCard> {
         final StopwatchUtils stopwatchUtils = StopwatchUtils();
         stopwatchUtils.start();
         Navigator.of(context).push(
-        MaterialPageRoute(
-          fullscreenDialog: true,
-          builder: (BuildContext context) {
-            final TransactionPreview transactionPreview = TransactionPreview(transaction: transaction);
-            stopwatchUtils.stop();
-            return transactionPreview;
-          },
-        ),
-      );
+          MaterialPageRoute(
+            fullscreenDialog: true,
+            builder: (BuildContext context) {
+              final TransactionPreview transactionPreview = TransactionPreview(transaction: transaction);
+              stopwatchUtils.stop();
+              return transactionPreview;
+            },
+          ),
+        );
       },
       child: Container(
         padding: EdgeInsets.all(16),

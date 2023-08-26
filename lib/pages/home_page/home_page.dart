@@ -50,23 +50,27 @@ class _HomePageState extends State<HomePage> {
             child: ScreenButtonList(
               buttons: <Widget>[
                 ScreenButton(
-                  caption: 'Transactions',
+                  caption: 'ListView()',
                   onTap: () => navigationCubit.navigate(NavigationScreens.transactions),
                 ),
                 ScreenButton(
-                  caption: 'New Transaction',
+                  caption: 'StatefulWidget()',
                   onTap: () => navigationCubit.navigate(NavigationScreens.newTransaction),
                 ),
                 ScreenButton(
-                  caption: 'Wallets',
+                  caption: 'BlocBuilder()',
                   onTap: () => navigationCubit.navigate(NavigationScreens.wallets),
                 ),
                 ScreenButton(
-                  caption: 'New Wallet',
+                  caption: 'dynamic type',
                   onTap: () => navigationCubit.navigate(NavigationScreens.newWallet),
                 ),
                 ScreenButton(
-                  caption: 'Edit Wallet',
+                  caption: 'Only BLoC',
+                  onTap: () => navigationCubit.navigate(NavigationScreens.editWallet),
+                ),
+                ScreenButton(
+                  caption: 'All in build()',
                   onTap: () => navigationCubit.navigate(NavigationScreens.editWallet),
                 ),
               ],

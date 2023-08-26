@@ -1,6 +1,8 @@
 class StopwatchUtils {
   final Stopwatch _stopwatch = Stopwatch();
+  final String _description;
 
+  StopwatchUtils({String? description}) : _description = description ?? 'Time to build widget:';
   void start() {
     _stopwatch.start();
   }
@@ -9,6 +11,6 @@ class StopwatchUtils {
     _stopwatch.stop();
     final int elapsedMilliseconds = _stopwatch.elapsedMilliseconds;
     final int elapsedMicroseconds = _stopwatch.elapsedMicroseconds;
-    print('Time to build widget: $elapsedMilliseconds ms / $elapsedMicroseconds μs');
+    print('$_description $elapsedMilliseconds ms / $elapsedMicroseconds μs');
   }
 }
