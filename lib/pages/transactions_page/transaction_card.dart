@@ -38,29 +38,45 @@ class _TransactionCardState extends State<TransactionCard> {
         );
       },
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: <Widget>[
             Row(
-              children: [
+              children: <Widget>[
                 DecoratedBox(
                   decoration: BoxDecoration(
-                    color: Color(0xFFD9D9D9),
+                    color: const Color(0xFFD9D9D9),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: SizedBox(width: 38, height: 38),
+                  child: const SizedBox(
+                    width: 38,
+                    height: 38,
+                  ),
                 ),
-                SizedBox(width: 10), // 16 is the default padding for ListTile
+                const SizedBox(width: 10), // 16 is the default padding for ListTile
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     Text('${widget.transaction.name}'),
+                    SizedBox(height: 5),
+                    Text(
+                      '${widget.transaction.dateTime}',
+                      style: TextStyle(
+                        color: Colors.deepPurple,
+                        fontSize: 12,
+                      ),
+                    ),
                   ],
                 ),
               ],
             ),
-            Text('${widget.transaction.amount} pln')
+            Text(
+              '${widget.transaction.amount} pln',
+              style: TextStyle(
+                color: widget.transaction.amount > 0 ? Colors.green : Colors.red,
+              ),
+            ),
           ],
         ),
       ),

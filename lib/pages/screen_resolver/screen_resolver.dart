@@ -5,6 +5,7 @@ import 'package:unclean_app/cubit/navigation_cubit/navigation_state.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:unclean_app/pages/home_page/home_page.dart';
 import 'package:unclean_app/pages/login_page/login_page.dart';
+import 'package:unclean_app/pages/stateful_widget_page/stateful_widget_page.dart';
 import 'package:unclean_app/pages/transactions_page/transactions_page.dart';
 
 class ScreenResolver extends StatefulWidget {
@@ -38,9 +39,11 @@ class _ScreenResolverState extends State<ScreenResolver> {
           if (state.currentScreen == NavigationScreens.login) {
             return LoginPage();
           } else if (state.currentScreen == NavigationScreens.home) {
-            return HomePage();
+            return const HomePage();
           } else if (state.currentScreen == NavigationScreens.transactions) {
-            return TransactionPage();
+            return const TransactionPage();
+          } else if (state.currentScreen == NavigationScreens.statefulWidget) {
+            return const SatefulWidgetPage();
           } else {
             return InkWell(
               onTap: () => navigationCubit.navigate(NavigationScreens.home),

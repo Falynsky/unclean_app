@@ -2,7 +2,7 @@ enum NavigationScreens {
   login,
   home,
   transactions,
-  newTransaction,
+  statefulWidget,
   wallets,
   newWallet,
   editWallet

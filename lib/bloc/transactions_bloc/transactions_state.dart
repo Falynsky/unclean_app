@@ -1,22 +1,22 @@
 import 'package:equatable/equatable.dart';
-import 'package:unclean_app/configs/transaction.dart';
+import 'package:flutter/material.dart';
 
 abstract class TransactionsState extends Equatable {
-  const TransactionsState();
+  final Key key;
+
+  TransactionsState({Key? key})
+      : key = key ?? UniqueKey(),
+        super();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => <Object?>[key];
 }
 
 class TransactionsInitial extends TransactionsState {}
 
 class TransactionsLoadedState extends TransactionsState {
-  final List<Transaction> transactions;
-
-  const TransactionsLoadedState({
-    required this.transactions,
-  });
+  TransactionsLoadedState({Key? key}) : super(key: key);
 
   @override
-  List<Object> get props => [transactions];
+  List<Object> get props => <Object>[key];
 }
