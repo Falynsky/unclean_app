@@ -25,7 +25,7 @@ class _TransactionPageState extends State<TransactionPage> {
     super.initState();
     navigationCubit = context.read<NavigationCubit>();
     transactionsBloc = TransactionsBloc();
-    scrollToBottomStopwatchUtils = StopwatchUtils(description: 'Time to scroll :');
+    scrollToBottomStopwatchUtils = StopwatchUtils(key: 'scroll_timer', description: 'Time to scroll :');
     scrollController.addListener(() {
       if (scrollController.offset >= scrollController.position.maxScrollExtent &&
           !scrollController.position.outOfRange) {
@@ -53,7 +53,7 @@ class _TransactionPageState extends State<TransactionPage> {
 
   @override
   Widget build(BuildContext context) {
-    final StopwatchUtils stopwatchUtils = StopwatchUtils();
+    final StopwatchUtils stopwatchUtils = StopwatchUtils(key: 'transaction_page');
     stopwatchUtils..start();
     final Widget widget = Scaffold(
       floatingActionButton: FloatingActionButton(

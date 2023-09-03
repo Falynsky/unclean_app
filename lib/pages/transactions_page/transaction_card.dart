@@ -24,7 +24,7 @@ class _TransactionCardState extends State<TransactionCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        final StopwatchUtils stopwatchUtils = StopwatchUtils();
+        final StopwatchUtils stopwatchUtils = StopwatchUtils(key: 'transaction_card');
         stopwatchUtils.start();
         Navigator.of(context).push(
           MaterialPageRoute(

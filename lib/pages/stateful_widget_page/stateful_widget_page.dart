@@ -25,7 +25,7 @@ class _SatefulWidgetPageState extends State<SatefulWidgetPage> {
 
   @override
   Widget build(BuildContext context) {
-    final StopwatchUtils stopwatchUtils = StopwatchUtils();
+    final StopwatchUtils stopwatchUtils = StopwatchUtils(key: 'sateful_widget_page');
     stopwatchUtils..start();
     final Widget widget = Scaffold(
       body: WillPopScope(
@@ -42,12 +42,41 @@ class _SatefulWidgetPageState extends State<SatefulWidgetPage> {
                   children: [
                     Container(
                       height: 80,
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'To jest główny StatefulWidget',
                         ),
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: const Text(
+                              'static progess : ',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: Container(
+                                child: const LinearProgressIndicator(
+                                  value: 0.25,
+                                  backgroundColor: Colors.grey,
+                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrange),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                     FirstStatefulWidget()
                   ],
                 ),
