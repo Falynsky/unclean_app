@@ -6,5 +6,6 @@ enum NavigationScreens {
   blocBuilder,
   dynamicType,
   onlyBloc,
-  allInBuild
+  allInBuild,
+  sizedBox
 }

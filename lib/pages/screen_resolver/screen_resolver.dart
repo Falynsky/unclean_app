@@ -6,6 +6,7 @@ import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:unclean_app/pages/bloc_builder/bloc_builder_page.dart';
 import 'package:unclean_app/pages/home_page/home_page.dart';
 import 'package:unclean_app/pages/login_page/login_page.dart';
+import 'package:unclean_app/pages/sized_box_page/sized_box_page.dart';
 import 'package:unclean_app/pages/stateful_widget_page/stateful_widget_page.dart';
 import 'package:unclean_app/pages/transactions_page/transactions_page.dart';
 
@@ -45,8 +46,10 @@ class _ScreenResolverState extends State<ScreenResolver> {
             return const TransactionPage();
           } else if (state.currentScreen == NavigationScreens.statefulWidget) {
             return const SatefulWidgetPage();
-              } else if (state.currentScreen == NavigationScreens.blocBuilder) {
+          } else if (state.currentScreen == NavigationScreens.blocBuilder) {
             return BlocBuilderPage();
+          } else if (state.currentScreen == NavigationScreens.sizedBox) {
+            return SizedBoxPage();
           } else {
             return InkWell(
               onTap: () => navigationCubit.navigate(NavigationScreens.home),

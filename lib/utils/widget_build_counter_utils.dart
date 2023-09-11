@@ -1,25 +1,42 @@
 class WidgetBuildCounterUtils {
-  final String _description;
-  final String _key;
-
   static final Map<String, int> _cache = <String, int>{};
+  static final Map<String, String> _cacheDescription = <String, String>{};
 
-  factory WidgetBuildCounterUtils({String? key, String? description}) {
-    return _instance ??= WidgetBuildCounterUtils._internal(key: key ?? 'test', description: description);
+  factory WidgetBuildCounterUtils() {
+    return _instance ??= WidgetBuildCounterUtils._internal();
   }
 
-  WidgetBuildCounterUtils._internal({required String key, String? description})
-      : _key = key,
-        _description = description ?? 'widget built:';
+  WidgetBuildCounterUtils._internal();
 
   static WidgetBuildCounterUtils? _instance;
 
-  void add() {
-    _cache[_key] = (_cache[_key] ?? 0) + 1;
+  void start({required String key, String? description}) {
+    _cache[key] = 0;
+    _cacheDescription[key] = description ?? key;
   }
 
-  void stop() {
-    final int builds =_cache.remove(_key)!;
-    print('$_description $builds times');
+  void add({required String key}) {
+    _cache[key] = (_cache[key] ?? 0) + 1;
+  }
+
+
+  int? get({required String key}) {
+    final int? builds = _cache[key];
+    if (builds == null) {
+      return null;
+    }
+    final String description = _cacheDescription[key] ?? 'test';
+    print('$description $builds times');
+    return builds;
+  }
+
+  int? stop({required String key}) {
+    final int? builds = _cache.remove(key);
+    if (builds == null) {
+      return null;
+    }
+    final String description = _cacheDescription[key] ?? 'test';
+    print('$description $builds times');
+    return builds;
   }
 }

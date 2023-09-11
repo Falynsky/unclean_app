@@ -62,6 +62,10 @@ class _HomePageState extends State<HomePage> {
                   onTap: () => navigationCubit.navigate(NavigationScreens.blocBuilder),
                 ),
                 ScreenButton(
+                  caption: 'sizedBox',
+                  onTap: () => navigationCubit.navigate(NavigationScreens.sizedBox),
+                ),
+                ScreenButton(
                   caption: 'dynamic type',
                   onTap: () => navigationCubit.navigate(NavigationScreens.dynamicType),
                 ),

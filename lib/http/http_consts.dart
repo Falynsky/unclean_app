@@ -1,3 +1,3 @@
 class HttpConsts {
-  static const String serverUrl = '192.168.0.158:8080';
+  static const String serverUrl = '172.20.10.2:8080';
 }

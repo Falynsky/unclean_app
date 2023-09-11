@@ -16,14 +16,15 @@ class StopwatchUtils {
     _cacheDescription[key] = description ?? key;
   }
 
-  void stop({required String key}) {
+  int? stop({required String key}) {
     final Stopwatch? stopwatch =_cache.remove(key);
     if (stopwatch == null) {
-      return;
+      return null;
     }
     final String description = _cacheDescription[key] ?? 'test';
     final int elapsedMilliseconds = stopwatch.elapsedMilliseconds;
     final int elapsedMicroseconds = stopwatch.elapsedMicroseconds;
     print('$description $elapsedMilliseconds ms / $elapsedMicroseconds μs');
+    return elapsedMilliseconds;
   }
 }
