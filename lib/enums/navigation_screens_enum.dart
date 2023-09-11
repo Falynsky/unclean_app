@@ -3,7 +3,8 @@ enum NavigationScreens {
   home,
   transactions,
   statefulWidget,
-  wallets,
-  newWallet,
-  editWallet
+  blocBuilder,
+  dynamicType,
+  onlyBloc,
+  allInBuild
 }

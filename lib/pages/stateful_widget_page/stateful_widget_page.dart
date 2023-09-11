@@ -25,9 +25,12 @@ class _SatefulWidgetPageState extends State<SatefulWidgetPage> {
 
   @override
   Widget build(BuildContext context) {
-    final StopwatchUtils stopwatchUtils = StopwatchUtils(key: 'sateful_widget_page');
-    stopwatchUtils..start();
+    final StopwatchUtils stopwatchUtils = StopwatchUtils();
+    stopwatchUtils..start(key: 'sateful_widget_page');
     final Widget widget = Scaffold(
+      appBar:  AppBar(
+        title: Text('Stateful Widget Page'),
+      ),
       body: WillPopScope(
         onWillPop: onWillPop,
         child: Row(
@@ -86,7 +89,7 @@ class _SatefulWidgetPageState extends State<SatefulWidgetPage> {
         ),
       ),
     );
-    stopwatchUtils..stop();
+    stopwatchUtils..stop(key: 'sateful_widget_page');
     return widget;
   }
 

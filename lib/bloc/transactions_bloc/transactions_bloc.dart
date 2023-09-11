@@ -18,14 +18,12 @@ class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
     TransactionsEvent event,
     Emitter<TransactionsState> emit,
   ) async {
-    {
-      _transactions.clear();
-      final TransactionService transactionService = GetIt.I<ChopperClient>().getService<TransactionService>();
-      final Response<dynamic> response = await transactionService.fetchTransactions();
-      final body = response.body;
-      final List<Map<String, dynamic>> parsedBody = List<Map<String, dynamic>>.from(body);
-      _transactions.addAll(parsedBody.map(Transaction.fromJson).toList());
-      emit(TransactionsLoadedState());
-    }
+    _transactions.clear();
+    final TransactionService transactionService = GetIt.I<ChopperClient>().getService<TransactionService>();
+    final Response<dynamic> response = await transactionService.fetchTransactions();
+    final body = response.body;
+    final List<Map<String, dynamic>> parsedBody = List<Map<String, dynamic>>.from(body);
+    _transactions.addAll(parsedBody.map(Transaction.fromJson).toList());
+    emit(TransactionsLoadedState());
   }
 }

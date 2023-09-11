@@ -11,12 +11,22 @@ class ThirdStatefulWidget extends StatefulWidget {
 
 class _ThirdStatefulWidgetState extends State<ThirdStatefulWidget> {
 
-  late final int number;
+  late int number;
 
   @override
   void initState() {
     super.initState();
     number = widget.number;
+  }
+  
+    @override
+  void didUpdateWidget(covariant ThirdStatefulWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if(widget.number != oldWidget.number) {
+      setState(() {
+        number = widget.number;
+      });
+    }
   }
   
   @override

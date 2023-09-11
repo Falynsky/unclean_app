@@ -7,7 +7,6 @@ import 'package:unclean_app/http/services/auth/auth_service.dart';
 import 'package:unclean_app/http/services/configuration/configuration_service.dart';
 import 'package:unclean_app/http/services/transactions/transaction_service.dart';
 import 'package:unclean_app/http/services/user/user_service.dart';
-import 'package:unclean_app/l10n/generated/translations.dart';
 import 'package:unclean_app/pages/screen_resolver/screen_resolver.dart';
 
 Future<String> getTokenFromStorage() async {
@@ -70,9 +69,6 @@ class MyApp extends StatelessWidget {
           body: ScreenResolver(),
         ),
       ),
-      localizationsDelegates: Translations.localizationsDelegates,
-      supportedLocales: Translations.supportedLocales,
-      locale: Locale('pl'),
     );
   }
 

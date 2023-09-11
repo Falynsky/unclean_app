@@ -10,8 +10,8 @@ void main() {
   });
 
   testWidgets('ListView should display items', (WidgetTester tester) async {
-    StopwatchUtils stopwatchUtils = StopwatchUtils(description: 'ListView should display items');
-    stopwatchUtils..start();
+    StopwatchUtils stopwatchUtils = StopwatchUtils();
+    stopwatchUtils..start(key: 'test', description: 'ListView should display items');
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
         body: ListView(
@@ -19,7 +19,7 @@ void main() {
         ),
       ),
     ));
-    stopwatchUtils..stop();
+    stopwatchUtils..stop(key: 'test');
 
     // Find the text widgets
     final textFinders = find.byType(Text);
@@ -27,8 +27,8 @@ void main() {
   });
 
   testWidgets('ListView.builder should display items', (WidgetTester tester) async {
-    StopwatchUtils stopwatchUtils = StopwatchUtils(description: 'ListView.builder should display items');
-    stopwatchUtils..start();
+    StopwatchUtils stopwatchUtils = StopwatchUtils();
+    stopwatchUtils..start(key: 'test', description: 'ListView.builder should display items');
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
         body: ListView.builder(
@@ -39,7 +39,7 @@ void main() {
         ),
       ),
     ));
-    stopwatchUtils..stop();
+    stopwatchUtils..stop(key: 'test');
 
     // Find the text widgets
     final textFinders = find.byType(Text);

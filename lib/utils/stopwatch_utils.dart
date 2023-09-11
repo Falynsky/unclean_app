@@ -1,27 +1,29 @@
 class StopwatchUtils {
-  final String _description;
-  final String _key;
 
   static final Map<String, Stopwatch> _cache = <String, Stopwatch>{};
+  static final Map<String, String> _cacheDescription = <String, String>{};
 
-  factory StopwatchUtils({String? key, String? description}) {
-    return _instance ??= StopwatchUtils._internal(key: key ?? 'test', description: description);
+  factory StopwatchUtils() {
+    return _instance ??= StopwatchUtils._internal();
   }
 
-  StopwatchUtils._internal({required String key, String? description})
-      : _key = key,
-        _description = description ?? 'Time to build widget:';
+  StopwatchUtils._internal();
 
   static StopwatchUtils? _instance;
 
-  void start() {
-    _cache[_key] = Stopwatch()..start();
+  void start({required String key, String? description}) {
+    _cache[key] = Stopwatch()..start();
+    _cacheDescription[key] = description ?? key;
   }
 
-  void stop() {
-    final Stopwatch stopwatch =_cache.remove(_key)!;
+  void stop({required String key}) {
+    final Stopwatch? stopwatch =_cache.remove(key);
+    if (stopwatch == null) {
+      return;
+    }
+    final String description = _cacheDescription[key] ?? 'test';
     final int elapsedMilliseconds = stopwatch.elapsedMilliseconds;
     final int elapsedMicroseconds = stopwatch.elapsedMicroseconds;
-    print('$_description $elapsedMilliseconds ms / $elapsedMicroseconds μs');
+    print('$description $elapsedMilliseconds ms / $elapsedMicroseconds μs');
   }
 }

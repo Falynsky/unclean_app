@@ -59,19 +59,19 @@ class _HomePageState extends State<HomePage> {
                 ),
                 ScreenButton(
                   caption: 'BlocBuilder()',
-                  onTap: () => navigationCubit.navigate(NavigationScreens.wallets),
+                  onTap: () => navigationCubit.navigate(NavigationScreens.blocBuilder),
                 ),
                 ScreenButton(
                   caption: 'dynamic type',
-                  onTap: () => navigationCubit.navigate(NavigationScreens.newWallet),
+                  onTap: () => navigationCubit.navigate(NavigationScreens.dynamicType),
                 ),
                 ScreenButton(
                   caption: 'Only BLoC',
-                  onTap: () => navigationCubit.navigate(NavigationScreens.editWallet),
+                  onTap: () => navigationCubit.navigate(NavigationScreens.onlyBloc),
                 ),
                 ScreenButton(
                   caption: 'All in build()',
-                  onTap: () => navigationCubit.navigate(NavigationScreens.editWallet),
+                  onTap: () => navigationCubit.navigate(NavigationScreens.allInBuild),
                 ),
               ],
             ),

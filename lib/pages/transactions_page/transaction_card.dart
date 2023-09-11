@@ -24,14 +24,14 @@ class _TransactionCardState extends State<TransactionCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        final StopwatchUtils stopwatchUtils = StopwatchUtils(key: 'transaction_card');
-        stopwatchUtils.start();
+        final StopwatchUtils stopwatchUtils = StopwatchUtils();
+        stopwatchUtils.start(key: 'transaction_card');
         Navigator.of(context).push(
           MaterialPageRoute(
             fullscreenDialog: true,
             builder: (BuildContext context) {
               final TransactionPreview transactionPreview = TransactionPreview(transaction: transaction);
-              stopwatchUtils.stop();
+              stopwatchUtils.stop(key: 'transaction_card');
               return transactionPreview;
             },
           ),

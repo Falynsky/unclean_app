@@ -25,13 +25,13 @@ class _TransactionPageState extends State<TransactionPage> {
     super.initState();
     navigationCubit = context.read<NavigationCubit>();
     transactionsBloc = TransactionsBloc();
-    scrollToBottomStopwatchUtils = StopwatchUtils(key: 'scroll_timer', description: 'Time to scroll :');
+    scrollToBottomStopwatchUtils = StopwatchUtils();
     scrollController.addListener(() {
       if (scrollController.offset >= scrollController.position.maxScrollExtent &&
           !scrollController.position.outOfRange) {
-        scrollToBottomStopwatchUtils.stop();
+        scrollToBottomStopwatchUtils.stop(key: 'scroll_timer');
       } else {
-        scrollToBottomStopwatchUtils.stop();
+        scrollToBottomStopwatchUtils.stop(key: 'scroll_timer');
       }
     });
   }
@@ -39,12 +39,12 @@ class _TransactionPageState extends State<TransactionPage> {
   void _onPressed() async {
     //if on botton jump to top else jump to bottom
     if (scrollController.offset >= scrollController.position.maxScrollExtent && !scrollController.position.outOfRange) {
-      scrollToBottomStopwatchUtils.start();
+      scrollToBottomStopwatchUtils.start(key: 'scroll_timer', description: 'Time to scroll :');
       scrollController.jumpTo(
         scrollController.position.minScrollExtent,
       );
     } else {
-      scrollToBottomStopwatchUtils.start();
+      scrollToBottomStopwatchUtils.start(key: 'scroll_timer', description: 'Time to scroll :');
       scrollController.jumpTo(
         scrollController.position.maxScrollExtent,
       );
@@ -53,9 +53,13 @@ class _TransactionPageState extends State<TransactionPage> {
 
   @override
   Widget build(BuildContext context) {
-    final StopwatchUtils stopwatchUtils = StopwatchUtils(key: 'transaction_page');
-    stopwatchUtils..start();
+    final StopwatchUtils stopwatchUtils = StopwatchUtils();
+    stopwatchUtils..start(key: 'transaction_page_draw');
+    stopwatchUtils..start(key: 'transaction_page');
     final Widget widget = Scaffold(
+      appBar:  AppBar(
+        title: Text('ListView Page'),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _onPressed,
         splashColor: Colors.red,
@@ -79,7 +83,7 @@ class _TransactionPageState extends State<TransactionPage> {
         ),
       ),
     );
-    stopwatchUtils..stop();
+    stopwatchUtils..stop(key: 'transaction_page');
     return widget;
   }
 

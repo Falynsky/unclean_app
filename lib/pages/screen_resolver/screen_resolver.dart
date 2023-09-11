@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
 import 'package:unclean_app/cubit/navigation_cubit/navigation_state.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
+import 'package:unclean_app/pages/bloc_builder/bloc_builder_page.dart';
 import 'package:unclean_app/pages/home_page/home_page.dart';
 import 'package:unclean_app/pages/login_page/login_page.dart';
 import 'package:unclean_app/pages/stateful_widget_page/stateful_widget_page.dart';
@@ -44,6 +45,8 @@ class _ScreenResolverState extends State<ScreenResolver> {
             return const TransactionPage();
           } else if (state.currentScreen == NavigationScreens.statefulWidget) {
             return const SatefulWidgetPage();
+              } else if (state.currentScreen == NavigationScreens.blocBuilder) {
+            return BlocBuilderPage();
           } else {
             return InkWell(
               onTap: () => navigationCubit.navigate(NavigationScreens.home),

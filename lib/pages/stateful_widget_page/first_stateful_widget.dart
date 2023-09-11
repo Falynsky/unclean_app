@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:unclean_app/pages/stateful_widget_page/another_second_stateful_widget.dart';
 import 'package:unclean_app/pages/stateful_widget_page/second_stateful_widget.dart';
+import 'package:unclean_app/utils/stopwatch_utils.dart';
 
 class FirstStatefulWidget extends StatefulWidget {
   @override
@@ -15,35 +16,57 @@ class _FirstStatefulWidgetState extends State<FirstStatefulWidget> {
   void initState() {
     super.initState();
     number = Random().nextInt(100);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      StopwatchUtils().stop(key: 'first_stateful_widget_draw');
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    StopwatchUtils().start(key: 'first_stateful_widget_draw');
+    StopwatchUtils().start(key: 'first_stateful_widget');
+    final Expanded widget = Expanded(
       child: ColoredBox(
         color: const Color(0xFF6711AA),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(height: 80, child: Center(child: Text('To jest pierwszy zagnieżdżony StatefulWidget'))),
-            InkWell(
+          children: <Widget>[
+            const SizedBox(
+              height: 80,
+              child: Center(
+                child: Text('To jest pierwszy zagnieżdżony StatefulWidget'),
+              ),
+            ),
+            Center(
+              child: InkWell(
                 onTap: _incrementCounter,
                 child: Container(
+                  width: 100,
                   color: Colors.amberAccent,
-                  child: Text('losój numer'),
-                )),
+                  child: const Text(
+                    'losój numer',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
             SecondStatefulWidget(number: number),
             AnotherSecondStatefulWidget()
           ],
         ),
       ),
     );
+    StopwatchUtils().stop(key: 'first_stateful_widget');
+    return widget;
   }
 
-    void _incrementCounter() {
-    setState(() {
-      number = Random().nextInt(100);
+  void _incrementCounter() {
+    number = Random().nextInt(100);
+    StopwatchUtils().start(key: 'losoj_numer_rebuild');
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+      StopwatchUtils().stop(key: 'first_stateful_widget_draw');
     });
+    setState(() {});
   }
 }
