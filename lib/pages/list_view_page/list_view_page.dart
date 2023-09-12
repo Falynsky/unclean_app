@@ -5,17 +5,17 @@ import 'package:unclean_app/bloc/transactions_bloc/transactions_event.dart';
 import 'package:unclean_app/bloc/transactions_bloc/transactions_state.dart';
 import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
-import 'package:unclean_app/pages/transactions_page/transactions_list.dart';
+import 'package:unclean_app/pages/list_view_page/list_view_card_list.dart';
 import 'package:unclean_app/utils/stopwatch_utils.dart';
 
-class TransactionPage extends StatefulWidget {
-  const TransactionPage({Key? key}) : super(key: key);
+class ListViewPage extends StatefulWidget {
+  const ListViewPage({Key? key}) : super(key: key);
 
   @override
-  State<TransactionPage> createState() => _TransactionPageState();
+  State<ListViewPage> createState() => _ListViewPageState();
 }
 
-class _TransactionPageState extends State<TransactionPage> {
+class _ListViewPageState extends State<ListViewPage> {
   late NavigationCubit navigationCubit;
   late final TransactionsBloc transactionsBloc;
   late final StopwatchUtils scrollToBottomStopwatchUtils;
@@ -75,7 +75,7 @@ class _TransactionPageState extends State<TransactionPage> {
               if (state is TransactionsInitial) {
                 transactionsBloc.add(LoadTransactionsEvent());
               } else if (state is TransactionsLoadedState) {
-                return TransactionsList(scrollController: scrollController);
+                return ListViewCardList(scrollController: scrollController);
               }
               return const Center(child: CircularProgressIndicator());
             },

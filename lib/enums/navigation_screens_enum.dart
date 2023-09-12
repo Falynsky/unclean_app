@@ -1,11 +1,10 @@
 enum NavigationScreens {
   login,
   home,
-  transactions,
+  listView,
   statefulWidget,
   blocBuilder,
-  dynamicType,
+  sizedBox,
   onlyBloc,
   allInBuild,
-  sizedBox
 }

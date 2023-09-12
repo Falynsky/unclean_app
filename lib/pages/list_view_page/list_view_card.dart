@@ -3,16 +3,16 @@ import 'package:unclean_app/configs/transaction.dart';
 import 'package:unclean_app/dialogs/transaction_preview.dart';
 import 'package:unclean_app/utils/stopwatch_utils.dart';
 
-class TransactionCard extends StatefulWidget {
+class ListViewCard extends StatefulWidget {
   final Transaction transaction;
 
-  const TransactionCard({Key? key, required this.transaction}) : super(key: key);
+  const ListViewCard({Key? key, required this.transaction}) : super(key: key);
 
   @override
-  State<TransactionCard> createState() => _TransactionCardState();
+  State<ListViewCard> createState() => _ListViewCardState();
 }
 
-class _TransactionCardState extends State<TransactionCard> {
+class _ListViewCardState extends State<ListViewCard> {
   late final Transaction transaction;
   @override
   void initState() {

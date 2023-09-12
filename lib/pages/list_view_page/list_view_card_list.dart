@@ -4,17 +4,17 @@ import 'package:unclean_app/bloc/transactions_bloc/transactions_bloc.dart';
 import 'package:unclean_app/configs/transaction.dart';
 import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
-import 'package:unclean_app/pages/transactions_page/transaction_card.dart';
+import 'package:unclean_app/pages/list_view_page/list_view_card.dart';
 
-class TransactionsList extends StatefulWidget {
+class ListViewCardList extends StatefulWidget {
   final ScrollController scrollController;
-  const TransactionsList({required this.scrollController, Key? key}) : super(key: key);
+  const ListViewCardList({required this.scrollController, Key? key}) : super(key: key);
 
   @override
-  State<TransactionsList> createState() => _TransactionsListState();
+  State<ListViewCardList> createState() => _ListViewCardListState();
 }
 
-class _TransactionsListState extends State<TransactionsList> {
+class _ListViewCardListState extends State<ListViewCardList> {
   late NavigationCubit navigationCubit;
   late final TransactionsBloc transactionsBloc;
   late final ScrollController scrollController;
@@ -41,7 +41,7 @@ class _TransactionsListState extends State<TransactionsList> {
               controller: scrollController,
               children: transactionsBloc.transactions.map((Transaction transaction) {
                 return Container(
-                  child: TransactionCard(
+                  child: ListViewCard(
                     transaction: transaction,
                   ),
                 );

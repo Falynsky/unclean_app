@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
               buttons: <Widget>[
                 ScreenButton(
                   caption: 'ListView()',
-                  onTap: () => navigationCubit.navigate(NavigationScreens.transactions),
+                  onTap: () => navigationCubit.navigate(NavigationScreens.listView),
                 ),
                 ScreenButton(
                   caption: 'StatefulWidget()',
@@ -64,10 +64,6 @@ class _HomePageState extends State<HomePage> {
                 ScreenButton(
                   caption: 'sizedBox',
                   onTap: () => navigationCubit.navigate(NavigationScreens.sizedBox),
-                ),
-                ScreenButton(
-                  caption: 'dynamic type',
-                  onTap: () => navigationCubit.navigate(NavigationScreens.dynamicType),
                 ),
                 ScreenButton(
                   caption: 'Only BLoC',
