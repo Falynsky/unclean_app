@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:unclean_app/bloc/transactions_bloc/transactions_bloc.dart';
-import 'package:unclean_app/bloc/transactions_bloc/transactions_event.dart';
-import 'package:unclean_app/bloc/transactions_bloc/transactions_state.dart';
+import 'package:unclean_app/bloc/list_view_bloc/list_view_bloc.dart';
+import 'package:unclean_app/bloc/list_view_bloc/list_view_event.dart';
+import 'package:unclean_app/bloc/list_view_bloc/list_view_state.dart';
 import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:unclean_app/pages/list_view_page/list_view_card_list.dart';
@@ -20,6 +20,7 @@ class _ListViewPageState extends State<ListViewPage> {
   late final TransactionsBloc transactionsBloc;
   late final StopwatchUtils scrollToBottomStopwatchUtils;
   final ScrollController scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -29,24 +30,35 @@ class _ListViewPageState extends State<ListViewPage> {
     scrollController.addListener(() {
       if (scrollController.offset >= scrollController.position.maxScrollExtent &&
           !scrollController.position.outOfRange) {
-        scrollToBottomStopwatchUtils.stop(key: 'scroll_timer');
-      } else {
-        scrollToBottomStopwatchUtils.stop(key: 'scroll_timer');
+        scrollToBottomStopwatchUtils.stop(key: 'scroll_timer_down');
       }
+      if (scrollController.offset <= scrollController.position.minScrollExtent &&
+          !scrollController.position.outOfRange) {
+        scrollToBottomStopwatchUtils.stop(key: 'scroll_timer_up');
+      } else {
+        print('Scrolluje');
+      }
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      StopwatchUtils().stop(key: 'transaction_page_draw');
     });
   }
 
   void _onPressed() async {
-    //if on botton jump to top else jump to bottom
     if (scrollController.offset >= scrollController.position.maxScrollExtent && !scrollController.position.outOfRange) {
-      scrollToBottomStopwatchUtils.start(key: 'scroll_timer', description: 'Time to scroll :');
-      scrollController.jumpTo(
+      scrollToBottomStopwatchUtils.start(key: 'scroll_timer_up', description: 'Time to scroll up:');
+      await scrollController.animateTo(
         scrollController.position.minScrollExtent,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeOut,
       );
     } else {
-      scrollToBottomStopwatchUtils.start(key: 'scroll_timer', description: 'Time to scroll :');
-      scrollController.jumpTo(
+      scrollToBottomStopwatchUtils.start(key: 'scroll_timer_down', description: 'Time to scroll down:');
+      await scrollController.animateTo(
         scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeOut,
       );
     }
   }
@@ -57,8 +69,8 @@ class _ListViewPageState extends State<ListViewPage> {
     stopwatchUtils..start(key: 'transaction_page_draw');
     stopwatchUtils..start(key: 'transaction_page');
     final Widget widget = Scaffold(
-      appBar:  AppBar(
-        title: Text('ListView Page'),
+      appBar: AppBar(
+        title: const Text('ListView Page'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _onPressed,

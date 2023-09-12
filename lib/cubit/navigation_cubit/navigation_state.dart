@@ -9,9 +9,7 @@ class NavigationState extends Equatable {
   });
 
   factory NavigationState.empty() {
-    return const NavigationState(
-      currentScreen: NavigationScreens.login,
-    );
+    return const NavigationState(currentScreen: NavigationScreens.home);
   }
 
   NavigationState copyWith({

@@ -1,5 +1,4 @@
 enum NavigationScreens {
-  login,
   home,
   listView,
   statefulWidget,

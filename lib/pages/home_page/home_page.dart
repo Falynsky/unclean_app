@@ -28,24 +28,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: onWillPop,
+      onWillPop: () async => false,
       child: content(),
     );
-  }
-
-  Future<bool> onWillPop() async {
-    navigationCubit.navigate(NavigationScreens.login);
-    return false;
   }
 
   Widget content() {
     return Padding(
       padding: const EdgeInsets.only(top: 19),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
+        children: <Widget>[
           appToolbar(),
-          SizedBox(height: 26),
+          const SizedBox(height: 26),
           Expanded(
             child: ScreenButtonList(
               buttons: <Widget>[
@@ -86,9 +80,9 @@ class _HomePageState extends State<HomePage> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
+        children: <Widget>[
           Row(
-            children: [
+            children: <Widget>[
               SvgPicture.asset(
                 'assets/icons/face_man.svg',
                 width: 45,
@@ -104,7 +98,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          const Icon(Icons.dashboard_customize_outlined)
+          const Icon(Icons.dashboard_customize_outlined),
         ],
       ),
     );

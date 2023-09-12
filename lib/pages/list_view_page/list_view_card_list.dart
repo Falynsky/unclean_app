@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:unclean_app/bloc/transactions_bloc/transactions_bloc.dart';
+import 'package:unclean_app/bloc/list_view_bloc/list_view_bloc.dart';
 import 'package:unclean_app/configs/transaction.dart';
 import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
@@ -8,6 +8,7 @@ import 'package:unclean_app/pages/list_view_page/list_view_card.dart';
 
 class ListViewCardList extends StatefulWidget {
   final ScrollController scrollController;
+
   const ListViewCardList({required this.scrollController, Key? key}) : super(key: key);
 
   @override
@@ -31,7 +32,7 @@ class _ListViewCardListState extends State<ListViewCardList> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [
+        children: <Widget>[
           InkWell(
             onTap: () => navigationCubit.navigate(NavigationScreens.home),
             child: const Text('Loaded transactions'),
@@ -47,7 +48,7 @@ class _ListViewCardListState extends State<ListViewCardList> {
                 );
               }).toList(),
             ),
-          )
+          ),
         ],
       ),
     );
