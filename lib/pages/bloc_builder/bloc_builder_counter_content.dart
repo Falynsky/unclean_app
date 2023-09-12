@@ -27,15 +27,15 @@ class _BlocBuilderCounterContentState extends State<BlocBuilderCounterContent> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [
+        children: <Widget>[
           ButtonBar(
-            children: [
+            children: <Widget>[
               ElevatedButton(
                 onPressed: () {
                   StopwatchUtils().start(key: 'bloc_builder_counter_content');
                   blocBuilderBloc.add(StartTimer());
                 },
-                child: Text('Włącz stoper'),
+                child: const Text('Włącz stoper'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -44,14 +44,14 @@ class _BlocBuilderCounterContentState extends State<BlocBuilderCounterContent> {
                     StopwatchUtils().stop(key: 'bloc_builder_counter_content');
                   });
                 },
-                child: Text('Wyłącz stoper i wyswietl'),
+                child: const Text('Wyłącz stoper i wyswietl'),
               ),
               ElevatedButton(
                 onPressed: () {
                   blocBuilderBloc.add(ResetTimer());
                   WidgetBuildCounterUtils().stop(key: 'bloc_builder_text');
                 },
-                child: Text('Reset'),
+                child: const Text('Reset'),
               ),
             ],
           ),

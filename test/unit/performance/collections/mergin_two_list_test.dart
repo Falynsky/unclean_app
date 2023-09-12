@@ -18,8 +18,8 @@ class TestListConfig extends Equatable {
 }
 
 void main() {
-  int sizeOfFirstList = 10000;
-  int sizeOfSecondList = 15000;
+  const int sizeOfFirstList = 10000;
+  const int sizeOfSecondList = 15000;
   late List<TestListConfig> firstList;
   late List<TestListConfig> secondList;
   setUp(() {
@@ -71,7 +71,7 @@ void main() {
     stopwatchUtils.start(key: 'mergeManuallyLists');
 
     final Set<TestListConfig> seen = <TestListConfig>{};
-    final List<TestListConfig> mergedUnUnique = [...firstList, ...secondList];
+    final List<TestListConfig> mergedUnUnique = <TestListConfig>[...firstList, ...secondList];
     final List<TestListConfig> uniquelist = mergedUnUnique.where(seen.add).toList();
     print(uniquelist.length);
     stopwatchUtils.stop(key: 'mergeManuallyLists');

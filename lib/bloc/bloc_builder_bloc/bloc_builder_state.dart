@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class BlocBuilderState extends Equatable {
   final int counter;
   final bool isTimerActive;
-  const BlocBuilderState(this.counter, this.isTimerActive, {Key? key});
+  const BlocBuilderState(this.counter, this.isTimerActive);
 
 //copyWith
   BlocBuilderState copyWith({
@@ -14,10 +14,9 @@ class BlocBuilderState extends Equatable {
     return BlocBuilderState(
       counter ?? this.counter,
       isTimerActive ?? this.isTimerActive,
-      key: UniqueKey()
     );
   }
 
   @override
-  List<Object> get props => [counter, isTimerActive, UniqueKey()];
+  List<Object> get props => <Object>[counter, isTimerActive, UniqueKey()];
 }

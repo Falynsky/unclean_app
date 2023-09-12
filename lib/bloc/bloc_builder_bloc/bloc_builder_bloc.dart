@@ -17,7 +17,7 @@ class BlocBuilderBloc extends Bloc<BlocBuilderEvent, BlocBuilderState> {
     BlocBuilderEvent event,
     Emitter<BlocBuilderState> emit,
   ) async {
-    emit(BlocBuilderState(0, false));
+    emit(const BlocBuilderState(0, false));
   }
 
   Future<void> _startTimer(
@@ -32,7 +32,7 @@ class BlocBuilderBloc extends Bloc<BlocBuilderEvent, BlocBuilderState> {
     BlocBuilderEvent event,
     Emitter<BlocBuilderState> emit,
   ) async {
-    int timer = StopwatchUtils().stop(key: 'bloc_builder_stopper') ?? 0;
+    final int timer = StopwatchUtils().stop(key: 'bloc_builder_stopper') ?? 0;
     emit(state.copyWith(isTimerActive: false, counter: timer));
   }
 

@@ -5,7 +5,7 @@ abstract class BlocBuilderEvent extends Equatable {
   const BlocBuilderEvent();
 
   @override
-  List<Object> get props => [UniqueKey()];
+  List<Object> get props => <Object>[UniqueKey()];
 }
 
 class InitBlocBuilder extends BlocBuilderEvent {}

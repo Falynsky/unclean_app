@@ -28,11 +28,11 @@ class _BlocBuilderPageState extends State<BlocBuilderPage> {
 
   @override
   Widget build(BuildContext context) {
-    final BlocBuilderBloc blocBuilderBloc = BlocBuilderBloc(BlocBuilderState(0, false));
+    final BlocBuilderBloc blocBuilderBloc = BlocBuilderBloc(const BlocBuilderState(0, false));
     StopwatchUtils().start(key: 'bloc_builder', description: 'bloc_builder');
     final Scaffold scaffold = Scaffold(
       appBar: AppBar(
-        title: Text('Bloc Builder Page'),
+        title: const Text('Bloc Builder Page'),
       ),
       body: WillPopScope(
         onWillPop: onWillPop,

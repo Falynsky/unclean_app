@@ -33,8 +33,8 @@ class _SizedBoxPageState extends State<SizedBoxPage> {
         child: SingleChildScrollView(
           child: Column(children: <Widget>[
             for (int i = 0; i < 1000; i++)
-              i % 2 == 0 ? SizedBox(height: 10) : Text('test')
-          ]),
+              i % 2 == 0 ? const SizedBox(height: 10) : const Text('test'),
+          ],),
         ),
       ),
     );

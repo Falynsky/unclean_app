@@ -35,11 +35,10 @@ class _ThirdStatefulWidgetState extends State<ThirdStatefulWidget> {
       child: ColoredBox(
         color: const Color(0xFFCA6117),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container( height: 80, child: Center(child: Text('To jest trzeci zagnieżdżony StatefulWidget'))),
-            Text('Number: $number')
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            const SizedBox( height: 80, child: Center(child: Text('To jest trzeci zagnieżdżony StatefulWidget'))),
+            Text('Number: $number'),
           ],
         ),
       ),

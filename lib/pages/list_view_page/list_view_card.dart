@@ -6,7 +6,7 @@ import 'package:unclean_app/utils/stopwatch_utils.dart';
 class ListViewCard extends StatefulWidget {
   final Transaction transaction;
 
-  const ListViewCard({Key? key, required this.transaction}) : super(key: key);
+  const ListViewCard({required this.transaction, Key? key}) : super(key: key);
 
   @override
   State<ListViewCard> createState() => _ListViewCardState();
@@ -59,10 +59,10 @@ class _ListViewCardState extends State<ListViewCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text('${widget.transaction.name}'),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       '${widget.transaction.dateTime}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.deepPurple,
                         fontSize: 12,
                       ),

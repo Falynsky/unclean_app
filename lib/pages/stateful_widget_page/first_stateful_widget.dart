@@ -52,7 +52,7 @@ class _FirstStatefulWidgetState extends State<FirstStatefulWidget> {
             ),
             const SizedBox(height: 20),
             SecondStatefulWidget(number: number),
-            AnotherSecondStatefulWidget()
+            const AnotherSecondStatefulWidget(),
           ],
         ),
       ),

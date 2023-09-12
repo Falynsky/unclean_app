@@ -16,12 +16,11 @@ class _AnotherSecondStatefulWidgetState extends State<AnotherSecondStatefulWidge
     final String time = DateTime.now().toIso8601String().substring(0, 23);
     return Expanded(
       child: ColoredBox(
-        color: Color.fromARGB(255, 54, 167, 88),
+        color: const Color.fromARGB(255, 54, 167, 88),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(height: 80, child: Center(child: Text('To jest inny drugi zagnieżdżony StatefulWidget'))),
+          children: <Widget>[
+            const SizedBox(height: 80, child: Center(child: Text('To jest inny drugi zagnieżdżony StatefulWidget'))),
             SizedBox(
               height: 40,
               child: ListView.builder(

@@ -17,13 +17,13 @@ class _BlocBuilderTextState extends State<BlocBuilderText> {
 
   @override
   Widget build(BuildContext context) {
-    BlocBuilderBloc blocBuilderBloc = context.read<BlocBuilderBloc>();
+    final BlocBuilderBloc blocBuilderBloc = context.read<BlocBuilderBloc>();
     WidgetBuildCounterUtils().add(key: 'bloc_builder_text');
     WidgetBuildCounterUtils().get(key: 'bloc_builder_text');
     return Column(
-      children: [
+      children: <Widget>[
         Text(DateTime.now()
-            .toString()), //ten widget powinien sie odsiwezyc tylko jak bedzie zatrzymany stiper lub zerowany
+            .toString(),), //ten widget powinien sie odsiwezyc tylko jak bedzie zatrzymany stiper lub zerowany
         Text(blocBuilderBloc.state.counter.toString()),
       ],
     );

@@ -35,10 +35,9 @@ class _SecondStatefulWidgetState extends State<SecondStatefulWidget> {
       child: ColoredBox(
         color: const Color(0xFFAA1177),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(height: 80, child: Center(child: Text('To jest drugi zagnieżdżony StatefulWidget'))),
+          children: <Widget>[
+            const SizedBox(height: 80, child: Center(child: Text('To jest drugi zagnieżdżony StatefulWidget'))),
             ThirdStatefulWidget(number: number),
           ],
         ),

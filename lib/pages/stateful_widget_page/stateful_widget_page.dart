@@ -29,23 +29,22 @@ class _SatefulWidgetPageState extends State<SatefulWidgetPage> {
     stopwatchUtils..start(key: 'sateful_widget_page');
     final Widget widget = Scaffold(
       appBar:  AppBar(
-        title: Text('Stateful Widget Page'),
+        title: const Text('Stateful Widget Page'),
       ),
       body: WillPopScope(
         onWillPop: onWillPop,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             Expanded(
               child: ColoredBox(
                 color: Colors.amberAccent,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
+                  children: <Widget>[
+                    const SizedBox(
                       height: 80,
-                      child: const Center(
+                      child: Center(
                         child: Text(
                           'To jest główny StatefulWidget',
                         ),
@@ -55,7 +54,7 @@ class _SatefulWidgetPageState extends State<SatefulWidgetPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: <Widget>[
                           Container(
                             child: const Text(
                               'static progess : ',
@@ -80,7 +79,7 @@ class _SatefulWidgetPageState extends State<SatefulWidgetPage> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    FirstStatefulWidget()
+                    FirstStatefulWidget(),
                   ],
                 ),
               ),
