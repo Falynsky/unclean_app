@@ -5,7 +5,9 @@ import 'package:unclean_app/cubit/navigation_cubit/navigation_state.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:unclean_app/pages/bloc_builder/bloc_builder_page.dart';
 import 'package:unclean_app/pages/home_page/home_page.dart';
+import 'package:unclean_app/pages/justStatefulWidgetPage/just_stateful_widget_page.dart';
 import 'package:unclean_app/pages/list_view_page/list_view_page.dart';
+import 'package:unclean_app/pages/provider_page/provider_page.dart';
 import 'package:unclean_app/pages/sized_box_page/sized_box_page.dart';
 import 'package:unclean_app/pages/stateful_widget_page/stateful_widget_page.dart';
 
@@ -47,6 +49,10 @@ class _ScreenResolverState extends State<ScreenResolver> {
             return const BlocBuilderPage();
           } else if (state.currentScreen == NavigationScreens.sizedBox) {
             return SizedBoxPage();
+          } else if (state.currentScreen == NavigationScreens.justStatefulWidget) {
+            return const JustStatefulWidgetPage();
+          } else if (state.currentScreen == NavigationScreens.provider) {
+            return const ProviderPage();
           } else {
             return InkWell(
               onTap: () => navigationCubit.navigate(NavigationScreens.home),

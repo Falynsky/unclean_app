@@ -4,6 +4,6 @@ enum NavigationScreens {
   statefulWidget,
   blocBuilder,
   sizedBox,
-  onlyBloc,
-  allInBuild,
+  justStatefulWidget,
+  provider,
 }

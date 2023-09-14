@@ -44,28 +44,28 @@ class _HomePageState extends State<HomePage> {
             child: ScreenButtonList(
               buttons: <Widget>[
                 ScreenButton(
-                  caption: 'ListView()',
+                  caption: '1./13. ListView()',
                   onTap: () => navigationCubit.navigate(NavigationScreens.listView),
                 ),
                 ScreenButton(
-                  caption: 'StatefulWidget()',
+                  caption: '2. StatefulWidget()',
                   onTap: () => navigationCubit.navigate(NavigationScreens.statefulWidget),
                 ),
                 ScreenButton(
-                  caption: 'BlocBuilder()',
+                  caption: '3. BlocBuilder()',
                   onTap: () => navigationCubit.navigate(NavigationScreens.blocBuilder),
                 ),
                 ScreenButton(
-                  caption: 'sizedBox',
+                  caption: '4./5. SizedBox',
                   onTap: () => navigationCubit.navigate(NavigationScreens.sizedBox),
                 ),
                 ScreenButton(
-                  caption: 'Only BLoC',
-                  onTap: () => navigationCubit.navigate(NavigationScreens.onlyBloc),
+                  caption: '10. justStatefulWidget With SetState',
+                  onTap: () => navigationCubit.navigate(NavigationScreens.justStatefulWidget),
                 ),
                 ScreenButton(
-                  caption: 'All in build()',
-                  onTap: () => navigationCubit.navigate(NavigationScreens.allInBuild),
+                  caption: '11. Provider',
+                  onTap: () => navigationCubit.navigate(NavigationScreens.provider),
                 ),
               ],
             ),

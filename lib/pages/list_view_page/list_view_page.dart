@@ -30,13 +30,11 @@ class _ListViewPageState extends State<ListViewPage> {
     scrollController.addListener(() {
       if (scrollController.offset >= scrollController.position.maxScrollExtent &&
           !scrollController.position.outOfRange) {
-        scrollToBottomStopwatchUtils.stop(key: 'scroll_timer_down');
+        scrollToBottomStopwatchUtils.stop(key: 'jump_timer_down');
       }
       if (scrollController.offset <= scrollController.position.minScrollExtent &&
           !scrollController.position.outOfRange) {
-        scrollToBottomStopwatchUtils.stop(key: 'scroll_timer_up');
-      } else {
-        print('Scrolluje');
+        scrollToBottomStopwatchUtils.stop(key: 'jump_timer_up');
       }
     });
 
@@ -45,21 +43,13 @@ class _ListViewPageState extends State<ListViewPage> {
     });
   }
 
-  void _onPressed() async {
+  void _onPressed() {
     if (scrollController.offset >= scrollController.position.maxScrollExtent && !scrollController.position.outOfRange) {
-      scrollToBottomStopwatchUtils.start(key: 'scroll_timer_up', description: 'Time to scroll up:');
-      await scrollController.animateTo(
-        scrollController.position.minScrollExtent,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeOut,
-      );
+      scrollToBottomStopwatchUtils.start(key: 'jump_timer_up', description: 'Time to jump up:');
+      scrollController.jumpTo(scrollController.position.minScrollExtent);
     } else {
-      scrollToBottomStopwatchUtils.start(key: 'scroll_timer_down', description: 'Time to scroll down:');
-      await scrollController.animateTo(
-        scrollController.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeOut,
-      );
+      scrollToBottomStopwatchUtils.start(key: 'jump_timer_down', description: 'Time to jump down:');
+      scrollController.jumpTo(scrollController.position.maxScrollExtent);
     }
   }
 
@@ -79,7 +69,7 @@ class _ListViewPageState extends State<ListViewPage> {
       ),
       body: WillPopScope(
         onWillPop: onWillPop,
-        child: BlocProvider(
+        child: BlocProvider<TransactionsBloc>(
           create: (BuildContext context) => transactionsBloc,
           child: BlocBuilder<TransactionsBloc, TransactionsState>(
             bloc: transactionsBloc,
