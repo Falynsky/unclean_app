@@ -5,5 +5,4 @@ enum NavigationScreens {
   blocBuilder,
   sizedBox,
   justStatefulWidget,
-  provider,
 }
