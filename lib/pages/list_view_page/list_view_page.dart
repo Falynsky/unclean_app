@@ -28,12 +28,10 @@ class _ListViewPageState extends State<ListViewPage> {
     transactionsBloc = TransactionsBloc();
     scrollToBottomStopwatchUtils = StopwatchUtils();
     scrollController.addListener(() {
-      if (scrollController.offset >= scrollController.position.maxScrollExtent &&
-          !scrollController.position.outOfRange) {
+      final ScrollPosition position = scrollController.position;
+      if (position.atEdge && position.pixels == position.maxScrollExtent && !position.outOfRange) {
         scrollToBottomStopwatchUtils.stop(key: 'jump_timer_down');
-      }
-      if (scrollController.offset <= scrollController.position.minScrollExtent &&
-          !scrollController.position.outOfRange) {
+      } else if (position.atEdge && position.pixels == position.minScrollExtent && !position.outOfRange) {
         scrollToBottomStopwatchUtils.stop(key: 'jump_timer_up');
       }
     });
@@ -57,7 +55,7 @@ class _ListViewPageState extends State<ListViewPage> {
   Widget build(BuildContext context) {
     final StopwatchUtils stopwatchUtils = StopwatchUtils();
     stopwatchUtils..start(key: 'transaction_page_draw');
-    stopwatchUtils..start(key: 'transaction_page');
+    stopwatchUtils..start(key: 'transaction_page_constructor');
     final Widget widget = Scaffold(
       appBar: AppBar(
         title: const Text('ListView Page'),
@@ -85,7 +83,7 @@ class _ListViewPageState extends State<ListViewPage> {
         ),
       ),
     );
-    stopwatchUtils..stop(key: 'transaction_page');
+    stopwatchUtils..stop(key: 'transaction_page_constructor');
     return widget;
   }
 

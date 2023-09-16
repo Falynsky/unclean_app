@@ -31,10 +31,11 @@ class _SizedBoxPageState extends State<SizedBoxPage> {
       body: WillPopScope(
         onWillPop: onWillPop,
         child: SingleChildScrollView(
-          child: Column(children: <Widget>[
-            for (int i = 0; i < 1000; i++)
-              i % 2 == 0 ? const SizedBox(height: 10) : const Text('test'),
-          ],),
+          child: Column(
+            children: <Widget>[
+              for (int i = 0; i < 10000; i++) i % 2 == 0 ? const SizedBox(height: 10) : const Text('test'),
+            ],
+          ),
         ),
       ),
     );
