@@ -5,7 +5,7 @@ import 'package:unclean_app/cubit/navigation_cubit/navigation_state.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:unclean_app/pages/bloc_builder/bloc_builder_page.dart';
 import 'package:unclean_app/pages/home_page/home_page.dart';
-import 'package:unclean_app/pages/justStatefulWidgetPage/just_stateful_widget_page.dart';
+import 'package:unclean_app/pages/just_stateful_widget_page/just_stateful_widget_page.dart';
 import 'package:unclean_app/pages/list_view_page/list_view_page.dart';
 import 'package:unclean_app/pages/sized_box_page/sized_box_page.dart';
 import 'package:unclean_app/pages/stateful_widget_page/stateful_widget_page.dart';
@@ -43,7 +43,7 @@ class _ScreenResolverState extends State<ScreenResolver> {
           } else if (state.currentScreen == NavigationScreens.listView) {
             return const ListViewPage();
           } else if (state.currentScreen == NavigationScreens.statefulWidget) {
-            return const SatefulWidgetPage();
+            return const StatefulWidgetPage();
           } else if (state.currentScreen == NavigationScreens.blocBuilder) {
             return const BlocBuilderPage();
           } else if (state.currentScreen == NavigationScreens.sizedBox) {

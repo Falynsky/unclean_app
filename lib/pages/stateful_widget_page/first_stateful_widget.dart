@@ -63,8 +63,8 @@ class _FirstStatefulWidgetState extends State<FirstStatefulWidget> {
 
   void _incrementCounter() {
     number = Random().nextInt(100);
-    StopwatchUtils().start(key: 'losoj_numer_rebuild');
-        WidgetsBinding.instance.addPostFrameCallback((_) {
+    StopwatchUtils().start(key: 'first_stateful_widget_draw');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       StopwatchUtils().stop(key: 'first_stateful_widget_draw');
     });
     setState(() {});

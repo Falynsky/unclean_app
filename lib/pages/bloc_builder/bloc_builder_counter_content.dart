@@ -13,36 +13,38 @@ class BlocBuilderCounterContent extends StatefulWidget {
 
 class _BlocBuilderCounterContentState extends State<BlocBuilderCounterContent> {
   late final BlocBuilderBloc blocBuilderBloc;
+
   @override
   void initState() {
     super.initState();
     blocBuilderBloc = context.read<BlocBuilderBloc>();
-    StopwatchUtils().start(key: 'bloc_builder_counter_content');
+    StopwatchUtils().start(key: 'bloc_builder_counter_content_draw');
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      StopwatchUtils().stop(key: 'bloc_builder_counter_content');
+      StopwatchUtils().stop(key: 'bloc_builder_counter_content_draw');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    StopwatchUtils().start(key: 'bloc_builder_counter_content');
+    final Container container = Container(
       child: Column(
         children: <Widget>[
           ButtonBar(
             children: <Widget>[
               ElevatedButton(
                 onPressed: () {
-                  StopwatchUtils().start(key: 'bloc_builder_counter_content');
                   blocBuilderBloc.add(StartTimer());
                 },
                 child: const Text('Włącz stoper'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  blocBuilderBloc.add(StopTimer());
+                  StopwatchUtils().start(key: 'bloc_builder_counter_content_draw');
                   WidgetsBinding.instance.addPostFrameCallback((_) {
-                    StopwatchUtils().stop(key: 'bloc_builder_counter_content');
+                    StopwatchUtils().stop(key: 'bloc_builder_counter_content_draw');
                   });
+                  blocBuilderBloc.add(StopTimer());
                 },
                 child: const Text('Wyłącz stoper i wyswietl'),
               ),
@@ -59,5 +61,7 @@ class _BlocBuilderCounterContentState extends State<BlocBuilderCounterContent> {
         ],
       ),
     );
+    StopwatchUtils().stop(key: 'bloc_builder_counter_content');
+    return container;
   }
 }

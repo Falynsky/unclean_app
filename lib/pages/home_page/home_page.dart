@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () => navigationCubit.navigate(NavigationScreens.sizedBox),
                 ),
                 ScreenButton(
-                  caption: '10./11. widget with BLoC',
+                  caption: '10. just StatefulWidget',
                   onTap: () => navigationCubit.navigate(NavigationScreens.justStatefulWidget),
                 ),
               ],

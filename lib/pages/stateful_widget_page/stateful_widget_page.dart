@@ -5,30 +5,33 @@ import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:unclean_app/pages/stateful_widget_page/first_stateful_widget.dart';
 import 'package:unclean_app/utils/stopwatch_utils.dart';
 
-class SatefulWidgetPage extends StatefulWidget {
-  const SatefulWidgetPage({
+class StatefulWidgetPage extends StatefulWidget {
+  const StatefulWidgetPage({
     super.key,
   });
 
   @override
-  State<SatefulWidgetPage> createState() => _SatefulWidgetPageState();
+  State<StatefulWidgetPage> createState() => _StatefulWidgetPageState();
 }
 
-class _SatefulWidgetPageState extends State<SatefulWidgetPage> {
+class _StatefulWidgetPageState extends State<StatefulWidgetPage> {
   late NavigationCubit navigationCubit;
 
   @override
   void initState() {
     super.initState();
     navigationCubit = context.read<NavigationCubit>();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      StopwatchUtils().stop(key: 'stateful_widget_page_draw');
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final StopwatchUtils stopwatchUtils = StopwatchUtils();
-    stopwatchUtils..start(key: 'sateful_widget_page');
+    StopwatchUtils().start(key: 'stateful_widget_page');
+    StopwatchUtils().start(key: 'stateful_widget_page_draw');
     final Widget widget = Scaffold(
-      appBar:  AppBar(
+      appBar: AppBar(
         title: const Text('Stateful Widget Page'),
       ),
       body: WillPopScope(
@@ -88,7 +91,7 @@ class _SatefulWidgetPageState extends State<SatefulWidgetPage> {
         ),
       ),
     );
-    stopwatchUtils..stop(key: 'sateful_widget_page');
+    StopwatchUtils().stop(key: 'stateful_widget_page');
     return widget;
   }
 

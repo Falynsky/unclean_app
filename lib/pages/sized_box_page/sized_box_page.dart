@@ -17,12 +17,13 @@ class _SizedBoxPageState extends State<SizedBoxPage> {
     super.initState();
     navigationCubit = context.read<NavigationCubit>();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      StopwatchUtils().stop(key: 'sized_box_page');
+      StopwatchUtils().stop(key: 'sized_box_page_draw');
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    StopwatchUtils().start(key: 'sized_box_page_draw');
     StopwatchUtils().start(key: 'sized_box_page');
     final Scaffold scaffold = Scaffold(
       appBar: AppBar(
@@ -39,6 +40,7 @@ class _SizedBoxPageState extends State<SizedBoxPage> {
         ),
       ),
     );
+    StopwatchUtils().stop(key: 'sized_box_page');
     return scaffold;
   }
 

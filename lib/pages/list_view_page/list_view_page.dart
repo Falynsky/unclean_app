@@ -18,7 +18,6 @@ class ListViewPage extends StatefulWidget {
 class _ListViewPageState extends State<ListViewPage> {
   late NavigationCubit navigationCubit;
   late final TransactionsBloc transactionsBloc;
-  late final StopwatchUtils scrollToBottomStopwatchUtils;
   final ScrollController scrollController = ScrollController();
 
   @override
@@ -26,13 +25,12 @@ class _ListViewPageState extends State<ListViewPage> {
     super.initState();
     navigationCubit = context.read<NavigationCubit>();
     transactionsBloc = TransactionsBloc();
-    scrollToBottomStopwatchUtils = StopwatchUtils();
     scrollController.addListener(() {
       final ScrollPosition position = scrollController.position;
       if (position.atEdge && position.pixels == position.maxScrollExtent && !position.outOfRange) {
-        scrollToBottomStopwatchUtils.stop(key: 'jump_timer_down');
+        StopwatchUtils().stop(key: 'jump_timer_down');
       } else if (position.atEdge && position.pixels == position.minScrollExtent && !position.outOfRange) {
-        scrollToBottomStopwatchUtils.stop(key: 'jump_timer_up');
+        StopwatchUtils().stop(key: 'jump_timer_up');
       }
     });
 
@@ -42,20 +40,23 @@ class _ListViewPageState extends State<ListViewPage> {
   }
 
   void _onPressed() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      StopwatchUtils().stop(key: 'jump_draw');
+    });
+    StopwatchUtils().start(key: 'jump_draw', description: 'Time to render jump:');
     if (scrollController.offset >= scrollController.position.maxScrollExtent && !scrollController.position.outOfRange) {
-      scrollToBottomStopwatchUtils.start(key: 'jump_timer_up', description: 'Time to jump up:');
+      StopwatchUtils().start(key: 'jump_timer_up', description: 'Time to jump up:');
       scrollController.jumpTo(scrollController.position.minScrollExtent);
     } else {
-      scrollToBottomStopwatchUtils.start(key: 'jump_timer_down', description: 'Time to jump down:');
+      StopwatchUtils().start(key: 'jump_timer_down', description: 'Time to jump down:');
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final StopwatchUtils stopwatchUtils = StopwatchUtils();
-    stopwatchUtils..start(key: 'transaction_page_draw');
-    stopwatchUtils..start(key: 'transaction_page_constructor');
+    StopwatchUtils().start(key: 'transaction_page_draw');
+    StopwatchUtils().start(key: 'transaction_page');
     final Widget widget = Scaffold(
       appBar: AppBar(
         title: const Text('ListView Page'),
@@ -83,7 +84,7 @@ class _ListViewPageState extends State<ListViewPage> {
         ),
       ),
     );
-    stopwatchUtils..stop(key: 'transaction_page_constructor');
+    StopwatchUtils().stop(key: 'transaction_page');
     return widget;
   }
 

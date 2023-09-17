@@ -22,14 +22,15 @@ class _BlocBuilderPageState extends State<BlocBuilderPage> {
     super.initState();
     navigationCubit = context.read<NavigationCubit>();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      StopwatchUtils().stop(key: 'bloc_builder');
+      StopwatchUtils().stop(key: 'bloc_builder_draw');
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final BlocBuilderBloc blocBuilderBloc = BlocBuilderBloc(const BlocBuilderState(0, false));
-    StopwatchUtils().start(key: 'bloc_builder', description: 'bloc_builder');
+    StopwatchUtils().start(key: 'bloc_builder_draw');
+    StopwatchUtils().start(key: 'bloc_builder');
     final Scaffold scaffold = Scaffold(
       appBar: AppBar(
         title: const Text('Bloc Builder Page'),
@@ -47,6 +48,7 @@ class _BlocBuilderPageState extends State<BlocBuilderPage> {
         ),
       ),
     );
+    StopwatchUtils().stop(key: 'bloc_builder');
     return scaffold;
   }
 

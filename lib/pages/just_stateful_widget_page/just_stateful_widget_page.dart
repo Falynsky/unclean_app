@@ -20,15 +20,16 @@ class _JustStatefulWidgetPageState extends State<JustStatefulWidgetPage> {
     super.initState();
     navigationCubit = context.read<NavigationCubit>();
     currentTime = DateTime.now().toString();
+    StopwatchUtils().start(key: 'just_stateful_widget_page_draw');
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      StopwatchUtils().stop(key: 'just_stateful_widget_page');
+      StopwatchUtils().stop(key: 'just_stateful_widget_page_draw');
     });
   }
 
   @override
   Widget build(BuildContext context) {
     StopwatchUtils().start(key: 'just_stateful_widget_page');
-    return Scaffold(
+    final Scaffold scaffold = Scaffold(
       appBar: AppBar(
         title: const Text('just_stateful_widget_page'),
       ),
@@ -42,8 +43,9 @@ class _JustStatefulWidgetPageState extends State<JustStatefulWidgetPage> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
+                      StopwatchUtils().start(key: 'just_stateful_widget_page_draw');
                       WidgetsBinding.instance.addPostFrameCallback((_) {
-                        StopwatchUtils().stop(key: 'just_stateful_widget_page');
+                        StopwatchUtils().stop(key: 'just_stateful_widget_page_draw');
                       });
                       currentTime = DateTime.now().toString();
                     });
@@ -57,6 +59,8 @@ class _JustStatefulWidgetPageState extends State<JustStatefulWidgetPage> {
         ),
       ),
     );
+    StopwatchUtils().stop(key: 'just_stateful_widget_page');
+    return scaffold;
   }
 
   Future<bool> onWillPop() async {
