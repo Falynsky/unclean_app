@@ -4,12 +4,12 @@ import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:unclean_app/utils/stopwatch_utils.dart';
 
-class SizedBoxPage extends StatefulWidget {
+class ContainerPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _SizedBoxPageState();
+  State<StatefulWidget> createState() => _ContainerPageState();
 }
 
-class _SizedBoxPageState extends State<SizedBoxPage> {
+class _ContainerPageState extends State<ContainerPage> {
   late NavigationCubit navigationCubit;
 
   @override
@@ -17,14 +17,14 @@ class _SizedBoxPageState extends State<SizedBoxPage> {
     super.initState();
     navigationCubit = context.read<NavigationCubit>();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      StopwatchUtils().stop(key: 'sized_box_page_draw');
+      StopwatchUtils().stop(key: 'container_page_draw');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    StopwatchUtils().start(key: 'sized_box_page_draw');
-    StopwatchUtils().start(key: 'sized_box_page');
+    StopwatchUtils().start(key: 'container_page_draw');
+    StopwatchUtils().start(key: 'container_page');
     final Scaffold scaffold = Scaffold(
       appBar: AppBar(
         title: const Text('SizedBox'),
@@ -34,13 +34,13 @@ class _SizedBoxPageState extends State<SizedBoxPage> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              for (int i = 0; i < 10000; i++) i % 2 == 0 ? const SizedBox(height: 10) : const Text('test'),
+              for (int i = 0; i < 10000; i++) i.isEven ? Container(height: 10) : const Text('test'),
             ],
           ),
         ),
       ),
     );
-    StopwatchUtils().stop(key: 'sized_box_page');
+    StopwatchUtils().stop(key: 'container_page');
     return scaffold;
   }
 

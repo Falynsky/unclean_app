@@ -4,12 +4,12 @@ import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
 import 'package:unclean_app/cubit/navigation_cubit/navigation_state.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:unclean_app/pages/bloc_builder/bloc_builder_page.dart';
+import 'package:unclean_app/pages/container_page/container_page.dart';
 import 'package:unclean_app/pages/home_page/home_page.dart';
 import 'package:unclean_app/pages/just_stateful_widget_page/just_stateful_widget_page.dart';
 import 'package:unclean_app/pages/just_stateful_widget_page_2/just_stateful_widget_page_2.dart';
 import 'package:unclean_app/pages/list_view_page/list_view_page.dart';
-import 'package:unclean_app/pages/sized_box_page/sized_box_page.dart';
-import 'package:unclean_app/pages/sized_box_page_2/sized_box_page_2.dart';
+import 'package:unclean_app/pages/paddings_page/paddings_page.dart';
 import 'package:unclean_app/pages/stateful_widget_page/stateful_widget_page.dart';
 
 class ScreenResolver extends StatefulWidget {
@@ -48,10 +48,10 @@ class _ScreenResolverState extends State<ScreenResolver> {
             return const StatefulWidgetPage();
           } else if (state.currentScreen == NavigationScreens.blocBuilder) {
             return const BlocBuilderPage();
-          } else if (state.currentScreen == NavigationScreens.sizedBox) {
-            return SizedBoxPage();
-          } else if (state.currentScreen == NavigationScreens.sizedBox2) {
-            return SizedBoxPage2();
+          } else if (state.currentScreen == NavigationScreens.container) {
+            return ContainerPage();
+          } else if (state.currentScreen == NavigationScreens.paddings) {
+            return PaddingsPage();
           } else if (state.currentScreen == NavigationScreens.justStatefulWidget) {
             return const JustStatefulWidgetPage();
           } else if (state.currentScreen == NavigationScreens.justStatefulWidget2) {
