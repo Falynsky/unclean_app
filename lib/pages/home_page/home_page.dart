@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             child: ScreenButtonList(
               buttons: <Widget>[
                 ScreenButton(
-                  caption: '1./13. ListView()',
+                  caption: '1. | 12. ListView()',
                   onTap: () => navigationCubit.navigate(NavigationScreens.listView),
                 ),
                 ScreenButton(
@@ -56,12 +56,20 @@ class _HomePageState extends State<HomePage> {
                   onTap: () => navigationCubit.navigate(NavigationScreens.blocBuilder),
                 ),
                 ScreenButton(
-                  caption: '4./5. SizedBox',
+                  caption: '4. SizedBox',
                   onTap: () => navigationCubit.navigate(NavigationScreens.sizedBox),
+                ),
+                ScreenButton(
+                  caption: '5. SizedBox 2',
+                  onTap: () => navigationCubit.navigate(NavigationScreens.sizedBox2),
                 ),
                 ScreenButton(
                   caption: '10. just StatefulWidget',
                   onTap: () => navigationCubit.navigate(NavigationScreens.justStatefulWidget),
+                ),
+                ScreenButton(
+                  caption: '11. just StatefulWidget 2',
+                  onTap: () => navigationCubit.navigate(NavigationScreens.justStatefulWidget2),
                 ),
               ],
             ),
