@@ -27,7 +27,7 @@ class _ContainerPageState extends State<ContainerPage> {
     StopwatchUtils().start(key: 'container_page');
     final Scaffold scaffold = Scaffold(
       appBar: AppBar(
-        title: const Text('SizedBox'),
+        title: const Text('Containers'),
       ),
       body: WillPopScope(
         onWillPop: onWillPop,

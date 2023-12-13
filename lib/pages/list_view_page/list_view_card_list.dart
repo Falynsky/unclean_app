@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unclean_app/bloc/list_view_bloc/list_view_bloc.dart';
-import 'package:unclean_app/configs/transaction.dart';
 import 'package:unclean_app/cubit/navigation_cubit/navigation_cubit.dart';
 import 'package:unclean_app/enums/navigation_screens_enum.dart';
 import 'package:unclean_app/pages/list_view_page/list_view_card.dart';
@@ -30,6 +29,7 @@ class _ListViewCardListState extends State<ListViewCardList> {
 
   @override
   Widget build(BuildContext context) {
+    final List<dynamic> transactions = transactionsBloc.transactions;
     return Container(
       child: Column(
         children: <Widget>[
@@ -40,7 +40,9 @@ class _ListViewCardListState extends State<ListViewCardList> {
           Expanded(
             child: ListView(
               controller: scrollController,
-              children: transactionsBloc.transactions.map((Transaction transaction) {
+
+              /// VVV konieczność ręcznej iteracji po liście
+              children: transactions.map((transaction) {
                 return Container(
                   child: ListViewCard(
                     transaction: transaction,

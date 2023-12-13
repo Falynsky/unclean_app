@@ -38,6 +38,17 @@ void main() {
     stopwatchUtils..stop(key: 'test');
   });
 
+  test('for loop', () {
+    final StopwatchUtils stopwatchUtils = StopwatchUtils();
+    stopwatchUtils..start(key: 'test', description: 'for loop');
+
+    num eachElement = 0;
+    for (int i = 0; i < list.length; i++) {
+      eachElement = pow(list[i], 3);
+    }
+    stopwatchUtils..stop(key: 'test');
+  });
+
   test('for loop cached length', () {
     final StopwatchUtils stopwatchUtils = StopwatchUtils();
     stopwatchUtils..start(key: 'test', description: 'for loop cached length');
@@ -50,44 +61,21 @@ void main() {
     stopwatchUtils..stop(key: 'test');
   });
 
-  test('for loop', () {
-    final StopwatchUtils stopwatchUtils = StopwatchUtils();
-    stopwatchUtils..start(key: 'test', description: 'for loop');
-
-    num eachElement = 0;
-    for (int i = 0; i < list.length; i++) {
-      eachElement = pow(list[i], 3);
-    }
-    stopwatchUtils..stop(key: 'test');
-  });
-
-  test('while loop cashed length reversed order', () {
-    final StopwatchUtils stopwatchUtils = StopwatchUtils();
-    stopwatchUtils..start(key: 'test', description: 'while loop cashed length reversed order');
-    int count = list.length - 1;
-    num eachElement = 0;
-    while (count >= 0) {
-      eachElement = pow(list[count], 3);
-      count--;
-    }
-
-    stopwatchUtils..stop(key: 'test');
-  });
-
   test('forEach loop', () {
     final StopwatchUtils stopwatchUtils = StopwatchUtils();
     stopwatchUtils..start(key: 'test', description: 'forEach loop');
 
     num eachElement = 0;
-    for (final int element in list) {
+    list.forEach((int element) {
       eachElement = pow(element, 3);
-    }
+    });
+
     stopwatchUtils..stop(key: 'test');
   });
 
-  test('fo..in loop', () {
+  test('for..in loop', () {
     final StopwatchUtils stopwatchUtils = StopwatchUtils();
-    stopwatchUtils..start(key: 'test', description: 'fo..in loop');
+    stopwatchUtils..start(key: 'test', description: 'for..in loop');
 
     num eachElement = 0;
     for (final int element in list) {
@@ -102,7 +90,7 @@ void main() {
     num eachElement = 0;
     list.map((int e) {
       eachElement = pow(e, 3);
-    }).toList();
+    });
 
     stopwatchUtils..stop(key: 'test');
   });

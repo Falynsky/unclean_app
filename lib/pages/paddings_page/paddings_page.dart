@@ -27,7 +27,7 @@ class _PaddingsPageState extends State<PaddingsPage> {
     StopwatchUtils().start(key: 'paddings_page');
     final Scaffold scaffold = Scaffold(
       appBar: AppBar(
-        title: const Text('SizedBox'),
+        title: const Text('Paddings'),
       ),
       body: WillPopScope(
         onWillPop: onWillPop,

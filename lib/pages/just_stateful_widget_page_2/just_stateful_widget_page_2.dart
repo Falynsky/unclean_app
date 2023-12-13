@@ -31,7 +31,7 @@ class _JustStatefulWidgetPage2State extends State<JustStatefulWidgetPage2> {
     StopwatchUtils().start(key: 'just_stateful_widget_page');
     final Scaffold scaffold = Scaffold(
       appBar: AppBar(
-        title: const Text('just_stateful_widget_page'),
+        title: const Text('Stateful vs Bloc vs Provider'),
       ),
       body: WillPopScope(
         onWillPop: onWillPop,
